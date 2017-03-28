@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int first=Integer.parseInt(edit1.getText().toString());
                 int second=Integer.parseInt(edit2.getText().toString());
-                teview.setText(first*second);
                 teview.setText(String.valueOf(first*second));
 
             }
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int first=Integer.parseInt(edit1.getText().toString());
                 int second=Integer.parseInt(edit2.getText().toString());
-                teview.setText(first/second);
                 teview.setText(String.valueOf(first/(double)second));
 
             }
