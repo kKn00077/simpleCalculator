@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     EditText edit1;
     EditText edit2;
     TextView teview;
@@ -23,7 +23,12 @@ public class MainActivity extends AppCompatActivity {
         Button but4=(Button)findViewById(R.id.but_division);
         teview=(TextView)findViewById(R.id.text_result);
 
+        but1.setOnClickListener/*감시자 : 버튼의 클릭 여부 판단.*/(this/*처리자 : 핸들러가 있어야 버튼의 클릭여부를 알 수 있음. ,implements */); // 괄호 안에는 핸들러만 들어갈 수 있는데  현재 클래스가 핸들러 메소드를 받아서 this 를 넣어주는 것이 가능하다.
+        but2.setOnClickListener(this);
+        but3.setOnClickListener(this);
+        but4.setOnClickListener(this);
 
+/*
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +70,27 @@ public class MainActivity extends AppCompatActivity {
                 teview.setText(String.valueOf(first/(double)second));
 
             }
-        });
+        });*/
     }
+
+    @Override
+    public void onClick(View v) {
+
+        int num1=Integer.parseInt(edit1.getText().toString());
+        int num2=Integer.parseInt(edit2.getText().toString());
+        int result=0;
+
+        switch(v.getId()){ // 이벤트가 발생한 위젯의 아이디 값을 반34환함
+            case R.id.but_plus: result = num1+num2; break;
+            case R.id.but_minus: result = num1-num2; break;
+            case R.id.but_multiply: result = num1*num2; break;
+            case R.id.but_division: result = num1/num2; break;
+
+
+        }
+
+        teview.setText(result+"");
+
+    }
+
 }
